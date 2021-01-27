@@ -132,14 +132,14 @@ for name in sorted(favorite_language.keys()):
 
 # We can store a list of dictionaries:
 alien_3 = {'color': 'yellow', 'points': 5}
-all_aliens = [alien_0,alien_1,alien_3]
+all_aliens = [alien_0, alien_1, alien_3]
 for aliens in all_aliens:
     print(aliens)
 
 aliens = []
 # lets make a whole fleet of aliens
 for alien_number in range(30):
-    new_alien = {'color': 'green', 'points': 5,'speed': 'slow'}
+    new_alien = {'color': 'green', 'points': 5, 'speed': 'slow'}
     aliens.append(new_alien)
 
 # show the first 5 aliens:
@@ -148,10 +148,10 @@ for alien in aliens:
 
 print(str(len(aliens)))
 
-#lets use pizza to store a list inside a dictionary:
+# lets use pizza to store a list inside a dictionary:
 pizza = {
     'crust': 'thick',
-    'toppings': ['mushrooms','cheese','anchovies']
+    'toppings': ['mushrooms', 'cheese', 'anchovies']
 }
 print(pizza['toppings'])
 
@@ -164,4 +164,98 @@ user_base = {
 
 message = input('tell me something: ')
 print(message)
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+
+# Now, we'll create a class dog.
+class Dog:
+    """a simple attempt to model a dog."""
+
+    def __init__(self, name, dog):
+        """initialize name and age attributes."""
+        self.name = name
+        self.dog = dog
+
+    def sit(self):
+        """Simulate a dog sitting in response to a command."""
+        print(Self.name.title() + " is sitting now.")
+
+    def rollOver(self):
+        """Simulate a dog rolling over in response to a command."""
+        print(Self.name.title() + " rolled over!")
+
+myDog = Dog('willie',6)
+print('My dogs name ' + myDog.name.title() + '.')
+
+class Car:
+    """This class creates a car representation."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        long_name = str(self.year) + ' ' + self.make + ' ' + self.model
+        return long_name.title()
+
+    def read_odometer(self):
+        print('the car has ' + str(self.odometer_reading) + ' miles on it')
+
+    def update_odometer(self, mileage):
+        if mielage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print('feck off')
+
+    def increment_odometer(self, miles):
+        self.odometer_reading += miles
+
+
+
+"""if our attributed get too big, create a new class. For batteries:"""
+class Battery:
+    """a simple battery class"""
+
+    def __init__(self,battery_size=70):
+        """initialize the battery attributes"""
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        print('this batter has a size of ' + self.battery_size)
+
+
+class ElectricCar(Car):
+    """represents aspects of electric cars specifically"""
+
+    def __init__(self, make, model, year):
+        """initialize attributes of the parent classs."""
+        super().__init___(make, model, year)  # so these two init just link child/parent, and should be the same.
+        #self.battery_size = 70
+        self.battery = Battery()
+
+        # to override a function, just create a new one in the child with the same name, thats it- no problem.
+
+    def update_odometer(self, mileage):
+        print('lol')
+
+
+my_tesla = ElectricCar('tesla','model s', 2016)
+print(my_tesla.get_descriptive_name())
+
+#can create classes inheriting classes + calling instances of other classes! Like above:
+"""
+car class
+battery class
+electric class (child of car)
+    inside electric, create battery class assign with self.x
+
+And can call functions, working out way down:
+mytesla.battery.describe_batter()
+
+Also, good practive; have classes in their own file, import module, much like functions
+If classes are split up but nest, then inherit in the file for the one module
+Car is one module
+electric-car/batter in another module
+import car in the electric-car/battery module, then only import EC/B into the main script
+"""
